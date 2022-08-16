@@ -289,15 +289,21 @@ type Query{
     products: [Product!]!
     # This identifies the type of parameter. 
     product(id: ID): Product
+    categories(id: ID): Category
     }
     type Product{
-        id: String,
+
+        id: ID,
         name: String!, 
         description: String!,
         quantity: Int,
         price: Float,
         onSale:Boolean
         image: String!,
+        }
+        type Category{
+            id: ID,
+        name: String!,
         }
       
 `
