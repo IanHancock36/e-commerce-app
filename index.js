@@ -2,9 +2,13 @@ const { ApolloServer, gql } = require("apollo-server");
 
 // Scalar types which are: String, Int, Float, Boolean
 
+
 const typeDefs = gql`
 type Query{
-    hello: String,
+    # using [String] means you are infering an array with strings
+    hello: [String]!,
+    #  hello: String!, would be strict for a not allowing a null value to be passed
+
     numberOfShoes: Int,
     price: Float,
     isCool: Boolean
@@ -13,7 +17,7 @@ type Query{
 const resolvers = {
     Query: {
         hello: () => {
-            return "Hello World"
+            return ["Hello World", "Hey","I Like Turtles", "Pickles"]
         },
         numberOfShoes: () => {
             return 84
