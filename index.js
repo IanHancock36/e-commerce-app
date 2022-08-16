@@ -1,7 +1,24 @@
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer,gql } = require("apollo-server");
 
-const server = new ApolloServer();
+const typeDefs = gql`
+type Query{
+    hello: string
+}
+`
+const resolvers = {
+    Query:{
+        hello: () =>{
+            return "Hello World"
+        }
+    }
+}
+const server = new ApolloServer({
+typeDefs,
+resolvers,
+});
 
 server.listen().then(({ url }) => {
     console.log("Server is ready at" + url)
 })
+
+// using "node index" in the commandline spins thi server up 
