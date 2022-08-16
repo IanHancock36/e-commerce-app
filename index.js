@@ -6,27 +6,32 @@ const { ApolloServer, gql } = require("apollo-server");
 const typeDefs = gql`
 type Query{
     # using [String] means you are infering an array with strings
-    hello: [String]!,
+    hello: [String],
     #  hello: String!, would be strict for a not allowing a null value to be passed
-
-    numberOfShoes: Int,
-    price: Float,
-    isCool: Boolean
-}
+    products: [Product!]!
+    }
+    type Product{
+        name: String!, 
+        description: String!,
+        quantity: Int,
+        price: Float,
+        onSale:Boolean
+        }
 `
 const resolvers = {
     Query: {
         hello: () => {
-            return ["Hello World", "Hey","I Like Turtles", "Pickles"]
+            return ["I Like Turtles", "Pickles"]
         },
-        numberOfShoes: () => {
-            return 84
-        },
-        price: () => {
-            return 84.99
-        },
-        isCool: () => {
-            return false
+        products: () => {
+            // you have to return an array of objects here.
+            return [{
+                name: "Bike",
+                description: "Mountain Bike women's 24 inch frame full suspension",
+                quantity: 6,
+                price: 1238.63,
+                onSale: false
+            }]
         }
     }
 }
