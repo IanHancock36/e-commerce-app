@@ -302,7 +302,7 @@ type Query{
     # This identifies the type of parameter. 
     product(id: ID!): Product
     categories:[Category!]!
-    category(id: ID!): Category
+    category(id: ID!): Category!
     }
     
     type Product{
@@ -313,6 +313,7 @@ type Query{
         price: Float,
         onSale:Boolean
         image: String!,
+        category: Category
         }
         
     type Category{
@@ -344,9 +345,18 @@ const resolvers = {
         products: (parent, args, context) => {
             console.log(parent)
             const categoryId = parent.id
-            return products.filter((product)=>{
+            return products.filter((product) => {
                 return product.categoryId === categoryId
             })
+        }
+    },
+    Product: {
+        category: (parent, args, context) => {
+            const categoryId = parent.categoryId;
+            return categories.find((category) => {
+                return category.id === categoryId
+            })
+
         }
     }
 }
