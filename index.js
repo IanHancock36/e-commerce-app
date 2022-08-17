@@ -317,13 +317,15 @@ const resolvers = {
             return products
         },
         product: (parent, args, context) => {
-            const productId = args.id
-            const product = products.find(product => product.id === productId)
-            if (!product) return null
-            return product
+            const { id } = args
+            return products.find(product => product.id === id)
         },
-        categories: ()=>{
+        categories: () => {
             return categories
+        },
+        category: (parent, args, context) => {
+            const { id } = args
+            return categories.find(category => category.id === id)
         }
     }
 }
