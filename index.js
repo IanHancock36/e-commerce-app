@@ -289,10 +289,10 @@ type Query{
     products: [Product!]!
     # This identifies the type of parameter. 
     product(id: ID): Product
-    categories(id: ID): Category
+    categories:[Category!]!
+    category(id:ID): Category
     }
     type Product{
-
         id: ID,
         name: String!, 
         description: String!,
@@ -302,7 +302,7 @@ type Query{
         image: String!,
         }
         type Category{
-            id: ID,
+            id:ID!
         name: String!,
         }
       
@@ -321,6 +321,9 @@ const resolvers = {
             const product = products.find(product => product.id === productId)
             if (!product) return null
             return product
+        },
+        categories: ()=>{
+            return categories
         }
     }
 }
