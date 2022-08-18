@@ -1,8 +1,9 @@
+const { reviews } = require("../db")
 
 exports.Review = {
-    category: ({categoryId}, args, {categories}) => {
-        return categories.find((category) => {
-            return category.id === categoryId
+   review: ({id}, args, {categories}) => {
+        return reviews.find((review) => {
+            return review.id === id
         })
     }
 }  

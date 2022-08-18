@@ -9,6 +9,8 @@ type Query{
     product(id: ID!): Product
     categories:[Category!]!
     category(id: ID!): Category!
+    reviews:[Review!]!
+    review:(id:ID!) : Review
     }
     
     type Product{

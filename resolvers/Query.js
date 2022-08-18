@@ -12,5 +12,7 @@ exports.Query = {
     },
     category: (parent, { id }, { categories }) => {
         return categories.find((category) => category.id === id)
-    }
+    },
+   
+    
 }
