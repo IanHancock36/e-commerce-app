@@ -9,8 +9,6 @@ type Query{
     product(id: ID!): Product
     categories:[Category!]!
     category(id: ID!): Category!
-    reviews:[Review!]!
-    review:(id:ID!) : Review
     }
     
     type Product{
@@ -22,6 +20,8 @@ type Query{
         onSale:Boolean
         image: String!,
         category: Category
+        # below the reviews array is accessed with product and products
+        reviews: [Review!]!
         }
         
     type Category{
@@ -31,12 +31,11 @@ type Query{
         }
 
 type Review{
-    id: ID
+    id: ID!
         date: String!
         title: String!
         comment: String!
-        rating: Int
-        productId: Int
-        reviews: [Review!]!
+        rating: Int!
+        # productId: Int!
 }   
 `
