@@ -42,5 +42,6 @@ type Review{
 # we are keeping this nullable on purpose
 input ProductsFilterInput {
     onSale:Boolean
-}
+    avgRating: Int
+    }
 `
