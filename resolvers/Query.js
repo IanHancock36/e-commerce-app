@@ -1,7 +1,18 @@
+
+// this is how the data is fetched. 
+
 exports.Query = {
-    products: (parent, args, { products }) => {
+    products: (parent, {filter}, { products }) => {
         // you have to return an array of objects here.
-        return products
+        let filteredProducts = products
+        if(filter){
+            if(filter.onSale === true){
+                filteredProducts = filteredProducts.filter(product =>{
+                    return product.onSale
+                })
+            }
+        }
+      return filteredProducts
     },
     product: (parent, { id }, { products }) => {
 

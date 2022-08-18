@@ -2,10 +2,11 @@ const { gql } = require("apollo-server");
 exports.typeDefs = gql`
 type Query{
     # using [String] means you are infering an array with strings
-    hello: [String],
     #  hello: String!, would be strict for a not allowing a null value to be passed
-    products: [Product!]!
+    products(filter: ProductsFilterInput): [Product!]!
+
     # This identifies the type of parameter. 
+    # products:[Product!]!
     product(id: ID!): Product
     categories:[Category!]!
     category(id: ID!): Category!
@@ -37,5 +38,9 @@ type Review{
         comment: String!
         rating: Int!
         # productId: Int!
-}   
+} 
+# we are keeping this nullable on purpose
+input ProductsFilterInput {
+    onSale:Boolean
+}
 `
