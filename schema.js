@@ -26,5 +26,15 @@ type Query{
         id:ID!
         name: String!,
         products:[Product!]!
-        }   
+        }
+
+type Review{
+    id: ID
+        date: String!
+        title: String!
+        comment: String!
+        rating: Int
+        productId: Int
+        reviews: [Review!]!
+}   
 `
