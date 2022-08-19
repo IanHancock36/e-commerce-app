@@ -11,6 +11,9 @@ type Query{
     categories:[Category!]!
     category(id: ID!): Category!
     }
+    type Mutation{
+        addCategory(input: AddCategoryInput): Category!
+    }
     
     type Product{
         id: ID,
@@ -43,5 +46,9 @@ type Review{
 input ProductsFilterInput {
     onSale:Boolean
     avgRating: Int
+    }
+
+    input AddCategoryInput {
+        name: String!
     }
 `
