@@ -48,7 +48,6 @@ exports.Mutation = {
             productId
         }
         review.push(newReview)
-
         return newReview
     }
 }

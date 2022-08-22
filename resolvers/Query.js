@@ -1,12 +1,10 @@
 
-// this is how the data is fetched. 
 
-const { reviews } = require("../db")
 
 exports.Query = {
-    products: (parent, { filter }, { products }) => {
+    products: (parent, { filter }, { db }) => {
         // you have to return an array of objects here.
-        let filteredProducts = products
+        let filteredProducts = db.products
         if (filter) {
             const { onSale, avgRating } = filter
             if (onSale) {
@@ -18,7 +16,7 @@ exports.Query = {
                 filteredProducts = filteredProducts.filter((product) => {
                     let sumRating = 0
                     let numberOfReviews
-                    reviews.forEach(review => {
+                   db.reviews.forEach(review => {
                         if (review.productId === product.id) {
                             sumRating += review.rating
                             numberOfReviews++
@@ -31,14 +29,14 @@ exports.Query = {
         }
         return filteredProducts
     },
-    product: (parent, { id }, { products }) => {
+    product: (parent, { id }, { db }) => {
 
-        return products.find((product) => product.id === id)
+        return db.products.find((product) => product.id === id)
     },
-    categories: () => {
-        return categories
+    categories: (parent, args, {db}) => {
+        return db.categories
     },
-    category: (parent, { id }, { categories }) => {
-        return categories.find((category) => category.id === id)
+    category: (parent, { id }, { db }) => {
+        return db.categories.find((category) => category.id === id)
     },
 } 

@@ -15,7 +15,10 @@ type Query{
         addCategory(input: AddCategoryInput!): Category!
         addProduct(input: AddProductInput! ) :Product!
         addReview(input: AddReviewInput!): Review!
-    }
+        # no need to return the item we deleted but only return a true or false for 
+        # a success 
+        deleteCategory(id: ID!): Boolean!
+        }
     
     type Product{
         id: ID,

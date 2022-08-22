@@ -1,11 +1,11 @@
 
 exports.Category = {
     // now we can basically pass it as a prop below for the 'parent param'
-    products: ({ id: categoryId }, { filter }, { products }) => {
+    products: ({ id: categoryId }, { filter }, { db }) => {
 
         // this is what it used to be const 
         //categoryId = parent.id
-        const categoryProducts = products.filter((product) => {
+        const categoryProducts = db.products.filter((product) => {
             product.categoryId === categoryId
             let filteredCategoryProducts = categoryProducts
             if (filter) {

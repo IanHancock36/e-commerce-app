@@ -5,7 +5,7 @@ const { Category } = require("./resolvers/Category")
 const { Product } = require("./resolvers/Product")
 const { Mutation } = require("./resolvers/Mutation")
 // only needed to be imported here. 
-const { categories, products, reviews } = require("./db")
+const { db } = require("./db")
 
 const server = new ApolloServer({
     typeDefs,
@@ -18,9 +18,7 @@ const server = new ApolloServer({
     // this is the raw data that is array of object and data of the product and category descriptions 
     // you are passing this through where it can be accessed anywhere in the project
     context: {
-        categories,
-        products,
-        reviews 
+        db
     }
 });
 
