@@ -18,6 +18,7 @@ type Query{
         # no need to return the item we deleted but only return a true or false for 
         # a success 
         deleteCategory(id: ID!): Boolean!
+        deleteProduct(id: ID!): Boolean!
         }
     
     type Product{
