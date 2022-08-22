@@ -14,6 +14,4 @@ exports.Mutation = {
         // the new category must be returned from this function basically
         return newCategory
     }
-   
-
 }
