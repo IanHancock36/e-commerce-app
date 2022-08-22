@@ -13,5 +13,16 @@ exports.Mutation = {
         categories.push(newCategory)
         // the new category must be returned from this function basically
         return newCategory
+    },
+    // I am extracting the input and the products array from context. 
+    addProduct: (parent, { input }, { products }) => {
+        const {
+            name,
+            image,
+            price,
+            onSale,
+            quantity,
+            categoryId } = input
+
     }
 }
