@@ -19,6 +19,7 @@ type Query{
         # a success 
         deleteCategory(id: ID!): Boolean!
         deleteProduct(id: ID!): Boolean!
+        deleteReview(id: ID!): Boolean!
         }
     
     type Product{
