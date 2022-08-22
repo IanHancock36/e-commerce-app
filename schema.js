@@ -14,6 +14,7 @@ type Query{
     type Mutation{
         addCategory(input: AddCategoryInput!): Category!
         addProduct(input: AddProductInput! ) :Product!
+        addReview(input: AddReviewInput!): Review!
     }
     
     type Product{
@@ -61,4 +62,11 @@ input ProductsFilterInput {
         image: String!,
         categoryId: String!
     }
+    input AddReviewInput {
+        date:    String!
+        title:   String!
+        comment: String!
+        rating:  Int!
+        productId: Int!
+        }
 `
